@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Daddy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+</head>
+<body>
+
+    <!-- OPTIONAL INTRODUCTORY CINEMATIC OVERLAY -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <p class="intro-text" id="intro-line-1">"For a man whose life has touched many..."</p>
+            <p class="intro-text hidden" id="intro-line-2">"For a father whose wisdom continues to guide..."</p>
+            <p class="intro-text hidden" id="intro-line-3">"For Daddy..."</p>
+            <div class="intro-actions">
+                <button id="skip-intro-btn" class="btn-secondary">Skip Intro</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING TOP BAR (Audio & Accessibility Controls) -->
+    <header class="top-control-bar">
+        <div class="brand-mini">Daddy's Birthday</div>
+        <div class="controls-right">
+            <button id="audio-toggle-btn" class="control-pill" aria-label="Toggle Birthday Melody">
+                <span class="icon">♪</span> <span id="audio-label">Play Birthday Song</span>
+            </button>
+            <button id="font-size-btn" class="control-pill" aria-label="Increase Text Size" title="Make Text Larger">
+                A+
+            </button>
+        </div>
+    </header>
+
+    <!-- STICKY NAVIGATION -->
+    <nav class="sticky-nav" id="stickyNav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">Dr. A. B. AYOOLA</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero">Home</a>
+                <a href="#tribute">Words of love</a>
+                <a href="#gallery">Moments</a>
+                <a href="#blessings">Blessings</a>
+                <a href="#surprise" class="nav-highlight">Surprise 🎉</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <main id="mainContent">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-content">
+                <span class="badge-gold">Celebrating an Icon</span>
+                <h1 class="hero-title">HAPPY BIRTHDAY, DADDY</h1>
+                <h2 class="hero-subtitle">Associate Professor Dr. Elder Ayoola Isiah Adesoye</h2>
+                <p class="hero-desc">Celebrating a father, a teacher, a mentor, a leader, and a blessing to many.</p>
+                <div class="hero-cta-group">
+                    <a href="#tribute" class="btn-primary" id="enterCelebrationBtn">
+                        Enter The Celebration <span>↓</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN SECTION -->
+        <section class="countdown-section">
+            <div class="container">
+                <div class="countdown-card" id="countdownCard">
+                    <h3 id="countdownHeader">THE CELEBRATION BEGINS IN</h3>
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="time-box"><span id="days">00</span><label>Days</label></div>
+                        <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+                        <div class="time-box"><span id="minutes">00</span><label>Minutes</label></div>
+                        <div class="time-box"><span id="seconds">00</span><label>Seconds</label></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSONAL INTRODUCTION -->
+        <section id="tribute" class="section personal-intro-section">
+            <div class="container grid-2">
+                <div class="intro-image-wrapper">
+                    <img src="img/main.jpeg" alt="Associate Professor Dr. Elder Ayoola Isiah Adesoye" class="profile-portrait">
+                    <div class="portrait-frame"></div>
+                </div>
+                <div class="intro-text-content">
+                    <span class="section-tag">A FEW WORDS FOR DADDY</span>
+                    <h2>TODAY, WE CELEBRATE YOU</h2>
+                    <p class="lead-text">Daddy, your life is a testament to unwavering faith, profound intellect, and boundless grace.</p>
+                    <p>Every step you take, every lesson you impart, and every prayer you utter leaves an indelible mark on our lives and the countless souls you have mentored over decades. Today is not just a celebration of another year of life; it is a celebration of the immense light you bring into this world.</p>
+                    <div class="signature-block">
+                        <span class="sig-name">With all our love,</span>
+                        <span class="sig-family">Your Wife and the children</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO MEMORY GALLERY -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Digital Family Album</span>
+                    <h2>MOMENTS WE TREASURE</h2>
+                    <p>A glimpse into a life of dignity, grace, and cherished memories.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="img/WhatsApp Image 2026-09-22 at 9.09.01 PM (1).jpeg" alt="Portrait of Daddy">
+                        <div class="gallery-caption"><span>A Life of Honor and Leadership</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="img/WhatsApp Image 2026-09-22 at 9.09.01 PM (2).jpeg" alt="Moments of Wisdom">
+                        <div class="gallery-caption"><span>Wisdom Shared with Grace</span></div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="img/WhatsApp Image 2026-09-22 at 9.09.01 PM.jpeg" alt="Celebration">
+                        <div class="gallery-caption"><span>Joyful Celebrations</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLESSINGS & PRAYERS SECTION -->
+        <section id="blessings" class="section blessings-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Heartfelt Wishes</span>
+                    <h2>OUR PRAYERS FOR YOU</h2>
+                    <p>May heaven's choicest blessings continue to surround you.</p>
+                </div>
+                <div class="blessings-grid">
+                    <div class="blessing-card">
+                        <div class="blessing-icon">🌿</div>
+                        <h3>Good Health</h3>
+                        <p>May divine vitality and sound health continually renew your physical strength each day.</p>
+                    </div>
+                    <div class="blessing-card">
+                        <div class="blessing-icon">✨</div>
+                        <h3>Long Life</h3>
+                        <p>May God satisfy you with longevity, strength, and many more peaceful years.</p>
+                    </div>
+                    <div class="blessing-card">
+                        <div class="blessing-icon">🕊️</div>
+                        <h3>Boundless Peace</h3>
+                        <p>May His transcendent peace guard your heart and home in all seasons.</p>
+                    </div>
+                    <div class="blessing-card">
+                        <div class="blessing-icon">⭐</div>
+                        <h3>Endless Joy</h3>
+                        <p>May gladness and deep fulfillment be your constant companion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL SURPRISE TRIGGER SECTION -->
+        <section id="surprise" class="section surprise-trigger-section text-center">
+            <div class="container">
+                <span class="badge-gold">The Ultimate Moment</span>
+                <h2>Daddy, There's One More Surprise...</h2>
+                <p>Tap below to unlock a special cinematic birthday greeting prepared just for you.</p>
+                <button id="triggerSurpriseBtn" class="btn-primary btn-large">
+                    OPEN DADDY'S SURPRISE 🎁
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CINEMATIC SURPRISE MODAL -->
+    <div id="surpriseModal" class="surprise-modal">
+        <div class="surprise-backdrop"></div>
+        <div class="surprise-modal-content">
+            <button id="closeSurpriseModal" class="close-modal-btn" aria-label="Close Surprise">×</button>
+            <div class="crown-icon">👑</div>
+            <div class="surprise-portrait-container">
+                <img src="img/WhatsApp Image 2026-09-22 at 9.09.02 PM.jpeg" alt="Daddy" class="surprise-portrait">
+            </div>
+            <h2 class="surprise-title">HAPPY BIRTHDAY, DADDY ❤️</h2>
+            <p class="surprise-message">
+                Thank you for being an exceptional father, a guiding light, and an enduring blessing to us all. May your special day overflow with profound joy and celestial peace.
+            </p>
+            <div class="surprise-signature">
+                <span>With profound love and respect,</span>
+                <strong>Your Family</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightboxImg" src="" alt="Zoomed view">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <h3>Associate Professor Dr. Elder Ayoola Isiah Adesoye</h3>
+            <p>Happy Birthday, Daddy.</p>
+            <p class="copyright">&copy; Your wife and the children. Created with love.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

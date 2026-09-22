@@ -1,0 +1,882 @@
+/* ==========================================
+   DESIGN TOKENS & CSS VARIABLES
+   ================================---------- */
+:root {
+    --bg-primary: #0a0f1d;
+    --bg-secondary: #131b2e;
+    --bg-card: #19233c;
+    --gold: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-dark: #aa8c2c;
+    --ivory: #faf8f5;
+    --text-main: #f0f2f5;
+    --text-muted: #b0bacc;
+    --border-color: rgba(212, 175, 55, 0.2);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --base-font-size: 16px;
+}
+
+/* ==========================================
+   RESET & GLOBAL STYLES
+   ================================---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: var(--base-font-size);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--ivory);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.badge-gold {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--gold-light);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.section-tag {
+    display: block;
+    color: var(--gold);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   INTRODUCTORY CINEMATIC OVERLAY
+   ================================---------- */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    max-width: 700px;
+}
+
+.intro-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    color: var(--ivory);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.intro-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-text.hidden {
+    display: none;
+}
+
+.intro-actions {
+    margin-top: 40px;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--gold-light);
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold);
+}
+
+/* ==========================================
+   TOP CONTROL BAR (Audio & Accessibility)
+   ================================---------- */
+.top-control-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: rgba(10, 15, 29, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.brand-mini {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+}
+
+.controls-right {
+    display: flex;
+    gap: 12px;
+}
+
+.control-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--ivory);
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.control-pill:hover {
+    background: var(--gold);
+    color: var(--bg-primary);
+    border-color: var(--gold);
+}
+
+/* ==========================================
+   STICKY NAVIGATION
+   ================================---------- */
+.sticky-nav {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: rgba(19, 27, 46, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 998;
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-highlight {
+    color: var(--gold-light) !important;
+    background: rgba(212, 175, 55, 0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--ivory);
+    transition: var(--transition);
+}
+
+/* ==========================================
+   HERO SECTION
+   ================================---------- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background: url('img/main.jpeg') no-repeat center center/cover;
+    margin-top: 50px;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10,15,29,0.7) 0%, rgba(10,15,29,0.9) 100%), radial-gradient(circle, transparent 30%, rgba(10,15,29,0.8) 90%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    color: var(--ivory);
+    margin-bottom: 12px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.hero-desc {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--bg-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 16px 36px;
+    font-size: 1.05rem;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+}
+
+.btn-large {
+    padding: 20px 48px;
+    font-size: 1.2rem;
+}
+
+/* ==========================================
+   COUNTDOWN SECTION
+   ================================---------- */
+.countdown-section {
+    padding: 60px 0 20px 0;
+    background: var(--bg-secondary);
+}
+
+.countdown-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.countdown-card h3 {
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 30px;
+    letter-spacing: 0.15em;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+}
+
+.time-box span {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.time-box label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   PERSONAL INTRO SECTION
+   ================================---------- */
+.personal-intro-section {
+    background: var(--bg-primary);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.intro-image-wrapper {
+    position: relative;
+}
+
+.profile-portrait {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+}
+
+.portrait-frame {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+.intro-text-content h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 20px;
+    color: var(--ivory);
+}
+
+.lead-text {
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.intro-text-content p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.signature-block {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sig-name {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.sig-family {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-top: 4px;
+}
+
+/* ==========================================
+   PHOTO GALLERY SECTION
+   ================================---------- */
+.gallery-section {
+    background: var(--bg-secondary);
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 380px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: var(--transition);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    background: linear-gradient(180deg, transparent 0%, rgba(10,15,29,0.95) 100%);
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.gallery-caption span {
+    font-family: var(--font-heading);
+    color: var(--gold-light);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   BLESSINGS SECTION
+   ================================---------- */
+.blessings-section {
+    background: var(--bg-primary);
+}
+
+.blessings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.blessing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.blessing-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+}
+
+.blessing-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.blessing-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--ivory);
+}
+
+.blessing-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   SURPRISE TRIGGER SECTION
+   ================================---------- */
+.surprise-trigger-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    padding: 120px 0;
+}
+
+.surprise-trigger-section h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    margin-bottom: 16px;
+}
+
+.surprise-trigger-section p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================
+   CINEMATIC SURPRISE MODAL
+   ================================---------- */
+.surprise-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px;
+}
+
+.surprise-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.surprise-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 8, 16, 0.92);
+    backdrop-filter: blur(15px);
+}
+
+.surprise-modal-content {
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    max-width: 650px;
+    width: 100%;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3);
+    z-index: 2;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surprise-modal.active .surprise-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--ivory);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal-btn:hover {
+    color: var(--gold);
+}
+
+.crown-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: floatCrown 3s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.surprise-portrait-container {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 24px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.surprise-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.surprise-title {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--ivory);
+    margin-bottom: 20px;
+}
+
+.surprise-message {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.surprise-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.surprise-signature span {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.surprise-signature strong {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--gold);
+}
+
+/* ==========================================
+   LIGHTBOX MODAL
+   ================================---------- */
+.lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 8, 16, 0.95);
+    z-index: 30000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.lightbox-modal.active {
+    display: flex;
+}
+
+.lightbox-modal img {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 12px;
+    border: 2px solid var(--gold);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.lightbox-caption {
+    margin-top: 20px;
+    font-family: var(--font-heading);
+    color: var(--gold-light);
+    font-size: 1.2rem;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: var(--ivory);
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+/* ==========================================
+   FOOTER
+   ================================---------- */
+.site-footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0;
+}
+
+.site-footer h3 {
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+}
+
+.site-footer p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ================================---------- */
+@media (max-width: 992px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .intro-image-wrapper {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        padding: 30px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .countdown-timer {
+        gap: 15px;
+    }
+
+    .time-box {
+        min-width: 70px;
+    }
+
+    .time-box span {
+        font-size: 2.2rem;
+    }
+}
